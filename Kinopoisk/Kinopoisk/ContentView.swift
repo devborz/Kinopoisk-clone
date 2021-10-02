@@ -23,6 +23,7 @@ struct ContentView: View {
                 Label("", systemImage: "person.crop.circle")
             }
         }
+        .accentColor(.orange)
     }
 }
 

@@ -16,16 +16,35 @@ struct HomeView: View {
         "Загрузки"
     ]
     
+    @State var selectedTab = 0
+    
+    @Namespace var animation
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .center, spacing: 10) {
-                        ForEach(0..<4, id: \.self) { i in
-                            HomeTab(name: tabNames[i])
+                ScrollViewReader { value in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(alignment: .center, spacing: 0) {
+                            
+                            ForEach(0..<4, id: \.self) { i in
+                                HomeTab(index: i, name: tabNames[i], animation: animation, current: $selectedTab)
+                                    .onTapGesture {
+                                        selectedTab = i
+                                        withAnimation {
+                                            value.scrollTo(i)
+                                        }
+                                        print(i)
+                                    }
+                                    .frame(height: 55)
+                                    .padding(.leading, 20)
+                                    .padding(.trailing, i == 3 ? 20 : 0)
+                            }
                         }
-                    }.padding(20)
+                        .frame(height: 55)
+                    }
                 }
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .center, spacing: 10) {
                         ForEach(0..<4, id: \.self) { i in
@@ -40,11 +59,34 @@ struct HomeView: View {
 }
 
 struct HomeTab: View {
+    var index: Int
     @State var name: String
+    
+    var animation: Namespace.ID
+    
+    @Binding var current: Int
+    
     var body: some View {
-        Text(name)
-            .bold()
-            .font(.system(size: 20, weight: .bold, design: .default))
+        VStack(spacing: 2) {
+            Text(name)
+                .bold()
+                .font(.system(size: 20, weight: .bold, design: .default))
+                .foregroundColor(Color(index == current ? UIColor.label : UIColor.secondaryLabel))
+                .animation(.easeOut(duration: 0.25))
+                .transition(.opacity)
+            ZStack(alignment: .bottom) {
+                RoundedRectangle(cornerRadius: 1.5)
+                    .fill(.clear)
+                    .frame(height: 3)
+                if index == current {
+                    RoundedRectangle(cornerRadius: 1.5)
+                        .fill(.orange)
+                        .frame(height: 3)
+                        .animation(.easeOut(duration: 0.25))
+                        .matchedGeometryEffect(id: "tab", in: animation)
+                }
+            }
+        }
     }
 }
 
