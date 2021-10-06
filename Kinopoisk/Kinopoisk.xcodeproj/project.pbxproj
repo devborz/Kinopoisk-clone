@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D42416F270D223400A6981D /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42416E270D223400A6981D /* HorizontalCardView.swift */; };
+		8D424171270D22AE00A6981D /* HomeMenuTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D424170270D22AE00A6981D /* HomeMenuTab.swift */; };
+		8D424173270D256A00A6981D /* WatchSquareCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D424172270D256A00A6981D /* WatchSquareCard.swift */; };
+		8D424176270D2D1000A6981D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D424175270D2D1000A6981D /* Models.swift */; };
 		8D4BD4B12701F65F0032631D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BD4B02701F65F0032631D /* HomeView.swift */; };
 		8D4BD4B32701F6960032631D /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BD4B22701F6960032631D /* MediaView.swift */; };
 		8D4BD4B52701F6A50032631D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BD4B42701F6A50032631D /* SearchView.swift */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D42416E270D223400A6981D /* HorizontalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
+		8D424170270D22AE00A6981D /* HomeMenuTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuTab.swift; sourceTree = "<group>"; };
+		8D424172270D256A00A6981D /* WatchSquareCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSquareCard.swift; sourceTree = "<group>"; };
+		8D424175270D2D1000A6981D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8D4BD4B02701F65F0032631D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8D4BD4B22701F6960032631D /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		8D4BD4B42701F6A50032631D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -42,6 +50,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D42416D270D205B00A6981D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8D42416E270D223400A6981D /* HorizontalCardView.swift */,
+				8D424170270D22AE00A6981D /* HomeMenuTab.swift */,
+				8D424172270D256A00A6981D /* WatchSquareCard.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		8D424174270D2CF400A6981D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8D424175270D2D1000A6981D /* Models.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		8D4BD4AF2701F58B0032631D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +82,7 @@
 		8D4BD4B92701F9120032631D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8D42416D270D205B00A6981D /* Cells */,
 				8D4BD4BA2701F9690032631D /* SearchBar.swift */,
 			);
 			name = Views;
@@ -80,6 +107,7 @@
 		8DCD89C52700CA9800FCE74D /* Kinopoisk */ = {
 			isa = PBXGroup;
 			children = (
+				8D424174270D2CF400A6981D /* Models */,
 				8D4BD4B92701F9120032631D /* Views */,
 				8D4BD4AF2701F58B0032631D /* Screens */,
 				8DCD89C62700CA9800FCE74D /* KinopoiskApp.swift */,
@@ -168,13 +196,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D424176270D2D1000A6981D /* Models.swift in Sources */,
 				8D4BD4BB2701F9690032631D /* SearchBar.swift in Sources */,
 				8D4BD4B72701F6B50032631D /* AccountView.swift in Sources */,
+				8D424173270D256A00A6981D /* WatchSquareCard.swift in Sources */,
+				8D42416F270D223400A6981D /* HorizontalCardView.swift in Sources */,
 				8D4BD4B52701F6A50032631D /* SearchView.swift in Sources */,
 				8D4BD4B12701F65F0032631D /* HomeView.swift in Sources */,
 				8D4BD4B32701F6960032631D /* MediaView.swift in Sources */,
 				8DCD89C92700CA9800FCE74D /* ContentView.swift in Sources */,
 				8DCD89C72700CA9800FCE74D /* KinopoiskApp.swift in Sources */,
+				8D424171270D22AE00A6981D /* HomeMenuTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

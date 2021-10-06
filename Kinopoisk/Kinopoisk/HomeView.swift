@@ -28,7 +28,7 @@ struct HomeView: View {
                         HStack(alignment: .center, spacing: 0) {
                             
                             ForEach(0..<4, id: \.self) { i in
-                                HomeTab(index: i, name: tabNames[i], animation: animation, current: $selectedTab)
+                                HomeMenuTab(index: i, name: tabNames[i], animation: animation, current: $selectedTab)
                                     .onTapGesture {
                                         selectedTab = i
                                         withAnimation {
@@ -48,9 +48,14 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .center, spacing: 10) {
                         ForEach(0..<4, id: \.self) { i in
-                            CardView()
+                            switch selectedTab {
+                            case 0:
+                                WatchSquareCard()
+                            default:
+                                HorizontalCardView()
+                            }
                         }
-                    }.padding(20)
+                    }.padding(.horizontal, 20)
                 }
             }
             .navigationTitle("Онлайн-кинотеатр")
@@ -58,57 +63,3 @@ struct HomeView: View {
     }
 }
 
-struct HomeTab: View {
-    var index: Int
-    @State var name: String
-    
-    var animation: Namespace.ID
-    
-    @Binding var current: Int
-    
-    var body: some View {
-        VStack(spacing: 2) {
-            Text(name)
-                .bold()
-                .font(.system(size: 20, weight: .bold, design: .default))
-                .foregroundColor(Color(index == current ? UIColor.label : UIColor.secondaryLabel))
-                .animation(.easeOut(duration: 0.25))
-                .transition(.opacity)
-            ZStack(alignment: .bottom) {
-                RoundedRectangle(cornerRadius: 1.5)
-                    .fill(.clear)
-                    .frame(height: 3)
-                if index == current {
-                    RoundedRectangle(cornerRadius: 1.5)
-                        .fill(.orange)
-                        .frame(height: 3)
-                        .animation(.easeOut(duration: 0.25))
-                        .matchedGeometryEffect(id: "tab", in: animation)
-                }
-            }
-        }
-    }
-}
-
-struct CardView: View {
-    
-    @State var name = "Back to the future"
-    @State var description = "Док и Марти летят в будущее"
-    
-    @State var imageWidth = UIScreen.main.bounds.size.width - 40
-    @State var imageHeight = (UIScreen.main.bounds.size.width - 40) / 16 * 9
-    
-    var body: some View {
-        VStack {
-            Image(systemName: "film")
-                .frame(width: imageWidth, height: imageHeight, alignment: .center)
-                .aspectRatio(9/16, contentMode: .fill)
-                .background(Color.secondary)
-                .cornerRadius(5)
-            Text(name)
-                .font(.system(size: 17, weight: .semibold, design: .default))
-            Text(description)
-                .font(.system(size: 12, weight: .regular, design: .default))
-        }
-    }
-}
